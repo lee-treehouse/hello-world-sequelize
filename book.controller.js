@@ -38,7 +38,11 @@ const Book = sequelize.define('books', {
 sequelize
     .sync()
     .then(() => {
-        Book.findAll()
+        Book.findOne({
+            where: {
+                id: '1',
+            },
+        })
             .then((res) => {
                 console.log(res);
             })
@@ -49,6 +53,16 @@ sequelize
     .catch((error) => {
         console.error('Unable to create table : ', error);
     });
+
+const findAllBooks = () => {
+    Book.findAll()
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((error) => {
+            console.error('Failed to retrieve data : ', error);
+        });
+};
 
 const createBook = () => {
     Book.create({
