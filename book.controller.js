@@ -38,21 +38,35 @@ const Book = sequelize.define('books', {
 sequelize
     .sync()
     .then(() => {
-        Book.findOne({
+        Book.destroy({
             where: {
-                id: '1',
+                id: 2,
             },
         })
-            .then((res) => {
-                console.log(res);
+            .then(() => {
+                console.log('Successfully deleted record.');
             })
             .catch((error) => {
-                console.error('Failed to retrieve data : ', error);
+                console.error('Failed to delete record : ', error);
             });
     })
     .catch((error) => {
         console.error('Unable to create table : ', error);
     });
+
+const findSpecificBook = () => {
+    Book.findOne({
+        where: {
+            id: '1',
+        },
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((error) => {
+            console.error('Failed to retrieve data : ', error);
+        });
+};
 
 const findAllBooks = () => {
     Book.findAll()
