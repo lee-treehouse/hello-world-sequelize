@@ -54,7 +54,7 @@ sequelize
         console.error('Unable to create table : ', error);
     });
 
-const findSpecificBook = () => {
+export const findSpecificBook = () => {
     Book.findOne({
         where: {
             id: '1',
@@ -68,7 +68,7 @@ const findSpecificBook = () => {
         });
 };
 
-const findAllBooks = () => {
+export const findAllBooks = () => {
     Book.findAll()
         .then((res) => {
             console.log(res);
@@ -78,7 +78,7 @@ const findAllBooks = () => {
         });
 };
 
-const createBook = () => {
+export const createBook = () => {
     Book.create({
         title: 'Clean Code',
         author: 'Robert Cecil Martin',
